@@ -1,0 +1,16 @@
+<div>
+    <section>
+        <h1>Characters List</h1>
+        @if (characters) {
+
+            @for (character of characters.results; track character.id) {
+                <div class="character-card">
+                    <img [src]="character.image" alt="character.name" />
+                    <h2>{{ character.name }}</h2>
+                    <p>Status: {{ character.status }}</p>
+                    <p>Species: {{ character.species }}</p>
+                </div>
+            }
+        }
+    </section>
+</div>
