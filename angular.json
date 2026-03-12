@@ -32,7 +32,6 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/rick-and-morty-app/",
               "budgets": [
                 {
                   "type": "initial",
