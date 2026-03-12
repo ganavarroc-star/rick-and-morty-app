@@ -7,10 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CharacterServices {
+  private apiUrl = 'https://rickandmortyapi.com/api/character';
 
-  constructor(private http: HttpClient) { } 
+  constructor(private http: HttpClient) {}
 
-  getCharacters(page: number) :Observable<Characters>{
-    return this.http.get<Characters>(`https://rickandmortyapi.com/api/character/?page=${page}`)
+  getCharacters(page: number = 1): Observable<Characters> {
+    return this.http.get<Characters>(`${this.apiUrl}/?page=${page}`);
   }
 }
