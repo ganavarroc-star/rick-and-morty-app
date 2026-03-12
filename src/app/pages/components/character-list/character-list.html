@@ -1,16 +1,61 @@
 <div>
     <section>
-        <h1>Characters List</h1>
-        @if (characters) {
-
-            @for (character of characters.results; track character.id) {
-                <div class="character-card">
-                    <img [src]="character.image" alt="character.name" />
-                    <h2>{{ character.name }}</h2>
-                    <p>Status: {{ character.status }}</p>
-                    <p>Species: {{ character.species }}</p>
-                </div>
-            }
+        <h1>🚀 Rick and Morty Characters</h1>
+        
+        <!-- Search and Filter Bar -->
+        <div class="search-filter-bar">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    placeholder="Busca por nombre..." 
+                    [(ngModel)]="searchName"
+                    (keyup.enter)="onSearch()"
+                    class="search-input"
+                />
+                <button (click)="onSearch()" class="btn btn-search">🔍 Buscar</button>
+            </div>
+            
+            <div class="filter-container">
+                <select [(ngModel)]="statusFilter" (change)="filterByStatus(statusFilter)" class="filter-select">
+                    <option value="">Todos los Estados</option>
+                    <option value="Alive">Vivos</option>
+                    <option value="Dead">Muertos</option>
+                    <option value="unknown">Desconocido</option>
+                </select>
+                <button (click)="reset()" class="btn btn-reset">🔄 Resetear</button>
+            </div>
+        </div>
+        
+        @if (isloading) {
+            <div class="loading-container">
+                <div class="spinner"></div>
+                <span>Cargando personajes...</span>
+            </div>
+        } @else if (characters && characters.results.length > 0) {
+            <div class="characters-grid">
+                @for (character of characters.results; track character.id) {
+                    <div class="character-card">
+                        <img [src]="character.image" [alt]="character.name" />
+                        <h2>{{ character.name }}</h2>
+                        @switch (character.status.toLowerCase()) {
+                            @case ('alive') {
+                                <p><strong>Status:</strong> <span class="status-alive">{{ character.status }}</span></p>
+                            }
+                            @case ('dead') {
+                                <p><strong>Status:</strong> <span class="status-dead">{{ character.status }}</span></p>
+                            }
+                            @default {
+                                <p><strong>Status:</strong> <span class="status-unknown">{{ character.status }}</span></p>
+                            }
+                        }
+                        <p><strong>Species:</strong> {{ character.species }}</p>
+                    </div>
+                }
+            </div>
+        } @else {
+            <div class="loading-container">
+                <p>❌ No se encontraron personajes.</p>
+            </div>
         }
     </section>
 </div>
