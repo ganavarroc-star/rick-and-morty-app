@@ -6,6 +6,8 @@ Aplicación Angular que consume la API pública de Rick and Morty para mostrar u
 
 **Repositorio GitHub:** https://github.com/ganavarroc-star/rick-and-morty-app
 
+**🌐 Aplicación Desplegada:** https://ganavarroc-star.github.io/rick-and-morty-app/
+
 ---
 
 ## ✅ Requisitos Cumplidos
@@ -157,6 +159,20 @@ npm run build
 # Output: dist/Rick-and-Morty/
 ```
 
+### 🚀 Despliegue en GitHub Pages
+
+La aplicación está desplegada automáticamente en GitHub Pages. Para desplegar cambios:
+
+```bash
+# 1. Generar el build de producción
+npm run build
+
+# 2. Publicar en GitHub Pages
+npx angular-cli-ghpages --dir=dist/Rick-and-Morty
+```
+
+**Acceso:** https://ganavarroc-star.github.io/rick-and-morty-app/
+
 ---
 
 ## 📱 Guía de Uso
@@ -214,6 +230,7 @@ npm run build
 ## 🔗 Enlaces Importantes
 
 - **Repositorio:** https://github.com/ganavarroc-star/rick-and-morty-app
+- **🌐 Aplicación Desplegada (GitHub Pages):** https://ganavarroc-star.github.io/rick-and-morty-app/
 - **API Documentación:** https://rickandmortyapi.com/documentation
 - **Angular Docs:** https://angular.dev
 - **Servidor Local:** http://localhost:4200/
